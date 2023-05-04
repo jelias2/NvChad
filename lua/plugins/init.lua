@@ -180,6 +180,12 @@ local default_plugins = {
           require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
       },
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+        end,
+      },
 
       -- cmp sources plugins
       {
@@ -265,6 +271,10 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+
+
+  -- Add Custom Colortheme
+  { "catppuccin/nvim", name = "catppuccin" },
 }
 
 local config = require("core.utils").load_config()

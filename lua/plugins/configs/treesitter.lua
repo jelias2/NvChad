@@ -1,5 +1,23 @@
 local options = {
-  ensure_installed = { "lua" },
+  ensure_installed = {
+    -- defaults 
+        "vim",
+        "lua",
+
+        -- web dev 
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "tsx",
+        "json",
+        -- "vue", "svelte",
+
+       -- low level
+        "c",
+        "zig",
+        "go"
+  },
 
   highlight = {
     enable = true,

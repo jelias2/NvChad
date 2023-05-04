@@ -6,7 +6,7 @@ M.general = {
   i = {
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "beginning of line" },
-    ["<C-e>"] = { "<End>", "end of line" },
+    -- ["<C-e>"] = { "<End>", "end of line" },
 
     -- navigate within insert mode
     ["<C-h>"] = { "<Left>", "move left" },
@@ -45,6 +45,7 @@ M.general = {
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
     ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
+    -- ["<leader><Space>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
   },
 
   t = {
@@ -70,14 +71,14 @@ M.tabufline = {
 
   n = {
     -- cycle through buffers
-    ["<tab>"] = {
+    ["<S-l>"] = {
       function()
         require("nvchad_ui.tabufline").tabuflineNext()
       end,
       "goto next buffer",
     },
 
-    ["<S-tab>"] = {
+    ["<S-h>"] = {
       function()
         require("nvchad_ui.tabufline").tabuflinePrev()
       end,
@@ -85,7 +86,7 @@ M.tabufline = {
     },
 
     -- close buffer + hide terminal buffer
-    ["<leader>x"] = {
+    ["<leader>c"] = {
       function()
         require("nvchad_ui.tabufline").close_buffer()
       end,
@@ -247,10 +248,16 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+    ["<C-e>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+    -- focus
+    -- ["<leader>  "] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
+  },
+  x = {
+    -- toggle
+    ["<C-e>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
 
     -- focus
-    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
+    -- ["<leader>  "] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
   },
 }
 
@@ -259,17 +266,17 @@ M.telescope = {
 
   n = {
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
-    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
+    ["<leader>sf"] = { "<cmd> Telescope find_files <CR>", "find files" },
+    ["<leader>sa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
+    ["<leader>st"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
-    ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
+    ["<leader>sr"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "find in current buffer" },
 
     -- git
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
-    ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
     -- pick a hidden term
     ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
@@ -284,14 +291,14 @@ M.nvterm = {
 
   t = {
     -- toggle in terminal mode
-    ["<A-i>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "toggle floating term",
-    },
+    -- ["<C-t>"] = {
+    --   function()
+    --     require("nvterm.terminal").toggle "float"
+    --   end,
+    --   "toggle floating term",
+    -- },
 
-    ["<A-h>"] = {
+    ["<C-t>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
@@ -308,14 +315,14 @@ M.nvterm = {
 
   n = {
     -- toggle in normal mode
-    ["<A-i>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "toggle floating term",
-    },
+    -- ["<C-t>"] = {
+    --   function()
+    --     require("nvterm.terminal").toggle "float"
+    --   end,
+    --   "toggle floating term",
+    -- },
 
-    ["<A-h>"] = {
+    ["<C-t>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
@@ -393,7 +400,7 @@ M.gitsigns = {
 
   n = {
     -- Navigation through hunks
-    ["]c"] = {
+    ["<leader>gk"] = {
       function()
         if vim.wo.diff then
           return "]c"
@@ -407,7 +414,7 @@ M.gitsigns = {
       opts = { expr = true },
     },
 
-    ["[c"] = {
+    ["<leader>gj"] = {
       function()
         if vim.wo.diff then
           return "[c"
